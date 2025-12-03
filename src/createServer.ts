@@ -4,7 +4,6 @@ import BareServer from './BareServer.js';
 import type {
 	BareMaintainer,
 	Options,
-	ConnectionLimiterOptions,
 } from './BareServer.js';
 import type { Database } from './Meta.js';
 import { JSONDatabaseAdapter } from './Meta.js';
@@ -35,11 +34,6 @@ export interface BareServerInit {
 	 */
 	legacySupport?: boolean;
 	database?: Database;
-	/**
-	 * Connection limiting options to prevent resource exhaustion attacks.
-	 * @default { maxConnectionsPerIP: 10, windowDuration: 60, blockDuration: 60 }
-	 */
-	connectionLimiter?: ConnectionLimiterOptions;
 }
 
 export interface Address {
@@ -98,14 +92,6 @@ export function createBareServer(directory: string, init: BareServerInit = {}) {
 		// const interval = setInterval(() => cleanupDatabase(database), 1000); // FIXME: global setInterval is not allowed
 		init.database = database;
 		// cleanup.push(() => clearInterval(interval));
-	}
-
-	if (!init.connectionLimiter) {
-		init.connectionLimiter = {
-			maxConnectionsPerIP: 10,
-			windowDuration: 60,
-			blockDuration: 60,
-		};
 	}
 
 	const server = new BareServer(directory, {
