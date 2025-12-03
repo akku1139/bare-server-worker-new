@@ -75,13 +75,13 @@ const project: BareProject = {
 };
 
 export function json<T>(status: number, json: T): globalThis.Response {
-	const send = Buffer.from(JSON.stringify(json, null, '\t'));
+	const send = JSON.stringify(json, null, '\t');
 
 	return new Response(send, {
 		status,
 		headers: {
 			'content-type': 'application/json',
-			'content-length': send.byteLength.toString(),
+			// 'content-length': send.byteLength.toString(),
 		},
 	});
 }
@@ -259,9 +259,7 @@ export default class Server extends EventEmitter {
 	get instanceInfo(): BareManifest {
 		return {
 			versions: this.versions,
-			language: 'NodeJS',
-			memoryUsage:
-				Math.round((process.memoryUsage().heapUsed / 1024 / 1024) * 100) / 100,
+			language: 'Cloudflare Workers',
 			maintainer: this.options.maintainer,
 			project,
 		};
