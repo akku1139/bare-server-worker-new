@@ -33,7 +33,6 @@
 	"dependencies": {
 		"async-exit-hook": "^2.0.1",
 		"http-errors": "^2.0.0",
-		"ipaddr.js": "^2.1.0",
 		"rate-limiter-flexible": "^7.3.1"
 	},
 	"devDependencies": {

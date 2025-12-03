@@ -1,7 +1,5 @@
-import { lookup } from 'node:dns';
 import { Agent as HttpAgent } from 'node:http';
 import { Agent as HttpsAgent } from 'node:https';
-import { isValid, parse } from 'ipaddr.js';
 import BareServer from './BareServer.js';
 import type {
 	BareMaintainer,
@@ -9,7 +7,7 @@ import type {
 	ConnectionLimiterOptions,
 } from './BareServer.js';
 import type { Database } from './Meta.js';
-import { cleanupDatabase, JSONDatabaseAdapter } from './Meta.js';
+import { JSONDatabaseAdapter } from './Meta.js';
 import registerV1 from './V1.js';
 import registerV2 from './V2.js';
 import registerV3 from './V3.js';
