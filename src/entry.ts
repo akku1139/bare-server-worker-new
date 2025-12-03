@@ -93,5 +93,6 @@ const server = startServer({
   },
   blockLocal: true,
 });
+server.listen(8000)
 
-export default httpServerHandler(server);
+export default httpServerHandler({ port: 8000 });

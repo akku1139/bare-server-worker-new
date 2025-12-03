@@ -1,6 +1,4 @@
 import { Readable } from 'node:stream';
-import type WebSocket from 'ws';
-import type { MessageEvent } from 'ws';
 import type {
 	BareRequest,
 	RouteCallback,

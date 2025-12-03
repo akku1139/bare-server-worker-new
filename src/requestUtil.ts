@@ -3,8 +3,6 @@ import type { ClientRequest, IncomingMessage, RequestOptions } from 'node:http';
 import { request as httpRequest } from 'node:http';
 import { request as httpsRequest } from 'node:https';
 import { Readable, type Duplex } from 'node:stream';
-import type { ErrorEvent } from 'ws';
-import WebSocket from 'ws';
 import { BareError } from './BareServer.js';
 import type { BareRequest, Options } from './BareServer.js';
 

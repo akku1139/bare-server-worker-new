@@ -2,7 +2,6 @@ import { lookup } from 'node:dns';
 import { Agent as HttpAgent } from 'node:http';
 import { Agent as HttpsAgent } from 'node:https';
 import { isValid, parse } from 'ipaddr.js';
-import { WebSocketServer } from 'ws';
 import BareServer from './BareServer.js';
 import type {
 	BareMaintainer,
@@ -145,7 +144,7 @@ export function createBareServer(directory: string, init: BareServerInit = {}) {
 	const server = new BareServer(directory, {
 		...(init as Required<BareServerInit>),
 		database: new JSONDatabaseAdapter(init.database),
-		wss: new WebSocketServer({ noServer: true }),
+		// wss: new WebSocketPair()[1],
 	});
 
 	init.legacySupport ??= true;

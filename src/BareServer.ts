@@ -9,7 +9,6 @@ import type { Agent as HttpsAgent } from 'node:https';
 import { Readable, type Duplex } from 'node:stream';
 import type { ReadableStream } from 'node:stream/web';
 import createHttpError from 'http-errors';
-import type WebSocket from 'ws';
 import { type RateLimiterRes, RateLimiterMemory } from 'rate-limiter-flexible';
 // @internal
 import type { JSONDatabaseAdapter } from './Meta.js';
@@ -154,7 +153,7 @@ export interface Options {
 	httpAgent: HttpAgent;
 	httpsAgent: HttpsAgent;
 	database: JSONDatabaseAdapter;
-	wss: WebSocket.Server;
+	wss: WebSocket;
 	/**
 	 * Connection limiting options to prevent resource exhaustion attacks.
 	 */
