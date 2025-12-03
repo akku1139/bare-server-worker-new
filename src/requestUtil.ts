@@ -75,12 +75,12 @@ export async function bareFetch(
 	// see https://github.com/nodejs/node/blob/e30e71665cab94118833cc536a43750703b19633/lib/internal/url.js#L1277
 
 	if (remote.protocol === 'https:')
-		outgoing = httpsRequest(remote, {
+		outgoing = httpsRequest(remote.toString(), {
 			...req,
 			agent: options.httpsAgent,
 		});
 	else if (remote.protocol === 'http:')
-		outgoing = httpRequest(remote, {
+		outgoing = httpRequest(remote.toString(), {
 			...req,
 			agent: options.httpAgent,
 		});
@@ -180,12 +180,12 @@ export async function webSocketFetch(
 	let outgoing: WebSocket;
 
 	if (remote.protocol === 'wss:')
-		outgoing = new WebSocket(remote, protocols, {
+		outgoing = new WebSocket(remote.toString(), protocols, {
 			...req,
 			agent: options.httpsAgent,
 		});
 	else if (remote.protocol === 'ws:')
-		outgoing = new WebSocket(remote, protocols, {
+		outgoing = new WebSocket(remote.toString(), protocols, {
 			...req,
 			agent: options.httpAgent,
 		});
