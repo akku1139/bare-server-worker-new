@@ -3,10 +3,11 @@ import type { BareServerInit, IPFamily } from './createServer.ts';
 import { createServer } from 'node:http';
 import exitHook from 'async-exit-hook';
 import type { BareMaintainer } from './BareServer.ts';
+import { httpServerHandler } from 'cloudflare:node';
 
-const bare = createBareServer('/', {
-  logErrors: true,
-});
+// const bare = createBareServer('/', {
+//   logErrors: true,
+// });
 
 // interface Env {}
 
@@ -84,7 +85,7 @@ const startServer = async ({
   });
 };
 
-await startServer({
+startServer({
   directory: '/',
   errors: true,
   host: '0.0.0.0',
@@ -95,3 +96,5 @@ await startServer({
   },
   blockLocal: true,
 });
+
+export default httpServerHandler({ port: 3000 });
