@@ -17,7 +17,7 @@ import { httpServerHandler } from 'cloudflare:node';
 //   },
 // }
 
-const startServer = async ({
+const startServer = ({
   directory,
   errors,
   host,
@@ -74,27 +74,24 @@ const startServer = async ({
     }
   });
 
-  server.listen({
-    host: host,
-    port: port,
-  });
-
   exitHook(() => {
     bareServer.close();
     server.close();
   });
+
+  return server;
 };
 
-startServer({
+const server = startServer({
   directory: '/',
   errors: true,
   host: '0.0.0.0',
   port: 8000,
   family: 0,
   maintainer: {
-    website: 'https://github.com/akku1139/bare-server-worker-new'
+    website: 'https://github.com/akku1139/bare-server-worker-new',
   },
   blockLocal: true,
 });
 
-export default httpServerHandler({ port: 8000 });
+export default httpServerHandler(server);
