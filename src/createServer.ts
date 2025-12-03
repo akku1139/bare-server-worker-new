@@ -20,20 +20,10 @@ export type IPFamily = 0 | 4 | 6;
 
 export interface BareServerInit {
 	logErrors?: boolean;
-	localAddress?: string;
 	/**
 	 * When set, the default logic for blocking local IP addresses is disabled.
 	 */
 	filterRemote?: Options['filterRemote'];
-	/**
-	 * When set, the default logic for blocking local IP addresses is disabled.
-	 */
-	lookup?: Options['lookup'];
-	/**
-	 * If local IP addresses/DNS records should be blocked.
-	 * @default true
-	 */
-	blockLocal?: boolean;
 	/**
 	 * IP address family to use when resolving `host` or `hostname`. Valid values are `0`, `4`, and `6`. When unspecified/0, both IP v4 and v6 will be used.
 	 */
@@ -88,27 +78,6 @@ export function createBareServer(directory: string, init: BareServerInit = {}) {
 
 	if (typeof init.family === 'number' && !validIPFamily.includes(init.family))
 		throw new RangeError('init.family must be one of: 0, 4, 6');
-
-	if (init.blockLocal ?? true) {
-		init.filterRemote ??= (url) => {
-			// if the remote is an IP then it didn't go through the init.lookup hook
-			// isValid determines if this is so
-			if (isValid(url.hostname) && parse(url.hostname).range() !== 'unicast')
-				throw new RangeError('Forbidden IP');
-		};
-
-		init.lookup ??= (hostname, options, callback) =>
-			lookup(hostname, options, (err, address, family) => {
-				if (
-					address &&
-					toAddressArray(address, family).some(
-						({ address }) => parse(address).range() !== 'unicast',
-					)
-				)
-					callback(new RangeError('Forbidden IP'), '', -1);
-				else callback(err, address, family);
-			});
-	}
 
 	if (!init.httpAgent) {
 		const httpAgent = new HttpAgent({

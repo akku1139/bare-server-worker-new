@@ -133,21 +133,6 @@ export interface Options {
 	 * @throws An error if the remote is bad.
 	 */
 	filterRemote?: (remote: Readonly<URL>) => Promise<void> | void;
-	/**
-	 * DNS lookup
-	 * May not get called when remote.host is an IP
-	 * Use in combination with filterRemote to block IPs
-	 */
-	lookup: (
-		hostname: string,
-		options: LookupOptions,
-		callback: (
-			err: NodeJS.ErrnoException | null,
-			address: string | LookupAddress[],
-			family: number,
-		) => void,
-	) => void;
-	localAddress?: string;
 	family?: number;
 	maintainer?: BareMaintainer;
 	httpAgent: HttpAgent;

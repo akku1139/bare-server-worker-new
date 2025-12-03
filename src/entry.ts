@@ -25,7 +25,6 @@ const startServer = ({
   localAddress,
   family,
   maintainer,
-  blockLocal,
 }: {
   directory: string;
   errors: boolean;
@@ -35,13 +34,10 @@ const startServer = ({
   family?: number;
   maintainer: BareMaintainer;
   maintainerFile?: string;
-  blockLocal?: boolean;
 }) => {
   const config: BareServerInit = {
     logErrors: errors,
-    localAddress,
     family: family as IPFamily,
-    blockLocal,
     maintainer: maintainer
   };
   const bareServer = createBareServer(directory, config);
@@ -91,7 +87,6 @@ const server = startServer({
   maintainer: {
     website: 'https://github.com/akku1139/bare-server-worker-new',
   },
-  blockLocal: true,
 });
 server.listen(8000)
 

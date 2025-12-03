@@ -66,9 +66,7 @@ export async function bareFetch(
 		headers: requestHeaders,
 		setHost: false,
 		signal,
-		localAddress: options.localAddress,
 		family: options.family,
-		lookup: options.lookup,
 	};
 
 	let outgoing: ClientRequest;
@@ -122,9 +120,7 @@ export async function bareUpgradeFetch(
 		timeout: 12e3,
 		setHost: false,
 		signal,
-		localAddress: options.localAddress,
 		family: options.family,
-		lookup: options.lookup,
 	};
 
 	let outgoing: ClientRequest;
@@ -178,9 +174,7 @@ export async function webSocketFetch(
 		method: request.method,
 		timeout: 12e3,
 		setHost: false,
-		localAddress: options.localAddress,
 		family: options.family,
-		lookup: options.lookup,
 	};
 
 	let outgoing: WebSocket;
