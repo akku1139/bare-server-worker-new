@@ -2,7 +2,7 @@
 	"compilerOptions": {
 		"outDir": "dist",
 		"lib": ["ESNext"],
-    "types": ["@cloudflare/workers-types"],
+    "types": ["@cloudflare/workers-types", "@types/node"],
 		"target": "ESNext",
 		"module": "nodenext",
 		"moduleResolution": "nodenext",
@@ -14,6 +14,7 @@
 		"resolveJsonModule": false,
 		"noEmit": true,
 		"allowImportingTsExtensions": true,
+		"skipLibCheck": true,
 	},
 	"include": ["src"]
 }

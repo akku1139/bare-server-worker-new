@@ -1,13 +1,11 @@
-import type { LookupOneOptions } from 'node:dns';
+import type { LookupAddress, LookupOptions } from 'node:dns';
 import EventEmitter from 'node:events';
-import { readFileSync } from 'node:fs';
 import type {
 	Agent as HttpAgent,
 	IncomingMessage,
 	ServerResponse,
 } from 'node:http';
 import type { Agent as HttpsAgent } from 'node:https';
-import { join } from 'node:path';
 import { Readable, type Duplex } from 'node:stream';
 import type { ReadableStream } from 'node:stream/web';
 import createHttpError from 'http-errors';
@@ -143,10 +141,10 @@ export interface Options {
 	 */
 	lookup: (
 		hostname: string,
-		options: LookupOneOptions,
+		options: LookupOptions,
 		callback: (
 			err: NodeJS.ErrnoException | null,
-			address: string,
+			address: string | LookupAddress[],
 			family: number,
 		) => void,
 	) => void;
