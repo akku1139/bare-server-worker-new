@@ -440,6 +440,7 @@ export default class Server extends EventEmitter {
 			const body = Readable.fromWeb(response.body as ReadableStream);
 			body.pipe(res);
 			res.on('close', () => body.destroy());
-		} else res.end();
+		}
+		res.end();
 	}
 }
