@@ -1,18 +1,19 @@
 {
-	"name": "@tomphttp/bare-server-node",
-	"description": "The Bare Server implementation in NodeJS.",
+	"name": "bare-server-worker-new",
+	"private": true,
+	"description": "The Bare Server implementation for Cloudflare Workers.",
 	"version": "2.0.6",
 	"homepage": "https://github.com/tomphttp",
 	"bugs": {
-		"url": "https://github.com/tomphttp/bare-server-node/issues"
+		"url": "https://github.com/akku1139/bare-server-worker-new/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/tomphttp/bare-server-node.git"
+		"url": "https://github.com/akku1139/bare-server-worker-new.git"
 	},
 	"author": {
-		"name": "TOMP Development",
-		"url": "https://github.com/tomphttp"
+		"name": "akku",
+		"url": "https://github.com/akku1139"
 	},
 	"keywords": [
 		"proxy",
@@ -20,19 +21,10 @@
 		"tomphttp"
 	],
 	"license": "GPL-3.0",
-	"type": "commonjs",
+	"type": "module",
 	"engines": {
 		"node": ">=18.0.0"
 	},
-	"bin": {
-		"bare-server-node": "bin.js"
-	},
-	"main": "dist/createServer.js",
-	"types": "dist/createServer.d.ts",
-	"files": [
-		"dist",
-		"bin.js"
-	],
 	"scripts": {
 		"build": "tsc",
 		"dev": "tsc --watch",
