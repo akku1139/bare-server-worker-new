@@ -69,9 +69,7 @@ export class BareError extends Error {
 	}
 }
 
-export const pkg = JSON.parse(
-	readFileSync(join(__dirname, '..', 'package.json'), 'utf-8'),
-) as { version: string };
+export const pkg = { version: '2.0.6-akku' };
 
 const project: BareProject = {
 	name: 'bare-server-node',
