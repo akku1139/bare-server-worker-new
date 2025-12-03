@@ -75,13 +75,13 @@ const project: BareProject = {
 };
 
 export function json<T>(status: number, json: T): globalThis.Response {
-	const send = JSON.stringify(json, null, '\t');
+	const send = Buffer.from(JSON.stringify(json, null, '\t'));
 
 	return new Response(send, {
 		status,
 		headers: {
 			'content-type': 'application/json',
-			// 'content-length': send.byteLength.toString(),
+			'content-length': send.byteLength.toString(),
 		},
 	});
 }
