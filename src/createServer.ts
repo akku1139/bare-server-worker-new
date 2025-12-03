@@ -129,9 +129,9 @@ export function createBareServer(directory: string, init: BareServerInit = {}) {
 
 	if (!init.database) {
 		const database = new Map<string, string>();
-		const interval = setInterval(() => cleanupDatabase(database), 1000);
+		// const interval = setInterval(() => cleanupDatabase(database), 1000); // FIXME: global setInterval is not allowed
 		init.database = database;
-		cleanup.push(() => clearInterval(interval));
+		// cleanup.push(() => clearInterval(interval));
 	}
 
 	if (!init.connectionLimiter) {
