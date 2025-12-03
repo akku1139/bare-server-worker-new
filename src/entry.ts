@@ -97,4 +97,4 @@ startServer({
   blockLocal: true,
 });
 
-export default httpServerHandler({ port: 3000 });
+export default httpServerHandler({ port: 8000 });
