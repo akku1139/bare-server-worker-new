@@ -282,7 +282,7 @@ const tunnelRequest: RouteCallback = async (request, res, options) => {
 	}
 
 	return new Response(
-		nullBodyStatus.includes(status) ? undefined : response,
+		nullBodyStatus.includes(status) ? undefined : Readable.toWeb(response),
 		{
 			status,
 			headers: splitHeaders(responseHeaders),
