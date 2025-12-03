@@ -1,4 +1,3 @@
-import type { LookupAddress, LookupOptions } from 'node:dns';
 import EventEmitter from 'node:events';
 import type {
 	Agent as HttpAgent,
